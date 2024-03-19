@@ -9,69 +9,80 @@ import SwiftUI
 
 struct Welcome2Page: View {
     var body: some View {
-        ZStack {
-            Color("logoColor")
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack(spacing: 20) {
-                Spacer().frame(height: 50) // Add space at the top
+        NavigationView {
+            ZStack {
+                Color("logoColor")
+                    .edgesIgnoringSafeArea(.all)
                 
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
-                    .padding(.top, -100)
-                
-                Image("welcome2Img")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 500, height: 500)
-                    .padding(.top, -100) // Adjust the top padding to bring it closer to the logo image
-                    .overlay(
-                        Rectangle()
-                            .foregroundColor(Color.white.opacity(0.4))
-                    )
-                
-                VStack(spacing: 20) {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            // Action for "Shop men's" button
-                        }) {
-                            Text("Shop men's")
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                        }
-                        Spacer()
-                        
-                        Button(action: {
-                            // Action for "Shop women's" button
-                        }) {
-                            Text("Shop women's")
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                        }
-                        Spacer()
+                VStack {
+                    Spacer()
+                    
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 300)
+                        .padding(.top, -90)
+                        .padding(.bottom, 300)
+                    
+                    GeometryReader { geometry in
+                        Image("welcome2Img")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 400, height: 300)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .overlay(
+                                Rectangle()
+                                    .foregroundColor(Color.white.opacity(0.4))
+                                    .frame(width: 600, height: 600)
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                            )
+                            .padding(.top, -100) // Adjust the top padding to bring it closer to the logo image
                     }
                     
-                    Button(action: {
-                        // Action for "Sign In/Register" button
-                    }) {
-                        Text("Sign In/Register")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                    VStack(spacing: 20) {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                // Action for "Shop men's" button
+                            }) {
+                                Text("Shop men's")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 2)
+                                    .frame(width: 200)
+                            }
+                            Spacer()
+                            
+                            Button(action: {
+                                // Action for "Shop women's" button
+                            }) {
+                                Text("Shop women's")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 2)
+                                    .frame(width: 200)
+                            }
+                            Spacer()
+                        }
+                        
+                        NavigationLink(destination: LoginView()) { // Navigate to LoginView
+                            Text("Sign In/Register")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .cornerRadius(10)
+                        }
                     }
+                    .padding(.horizontal, 20) // Add horizontal padding to the VStack
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
-            .padding(.horizontal, 20) // Add horizontal padding to the VStack
+            .navigationBarHidden(true)
         }
     }
 }
