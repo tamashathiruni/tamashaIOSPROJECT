@@ -8,73 +8,158 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var name = ""
-    @State private var email = ""
-    @State private var phoneNumber = ""
-    @State private var password = ""
+    
+    @State private var emailText = ""
+    @State private var passwordText = ""
+    @State private var contactNoText = ""
+    @State private var isValidEmail = true
+    @State private var isValidPassword = true
+    @State private var isValidPhoneNumber = true
+    
+    var canProceed: Bool {
+        Validator.validateEmail(emailText) &&
+            Validator.validatePassword(passwordText) &&
+            Validator.validatePhoneNumber(contactNoText)
+    }
+    
+    @FocusState private var focusField: FocusField?
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color("logoColor")
-                    .opacity(0.4) // Set the opacity to 40%
+                Color("yourDesiredBackgroundColor") // Set your desired background color here
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     Image("logoLandscape")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: geometry.size.width * 1, height: 300) // Set the width to 80% of the screen width
-                        .padding(.bottom, -10)
-                        .padding(.top, -300)
-                        .padding(.horizontal, -20)
+                        .frame(width: geometry.size.width * 1, height: 300) // Adjust size as needed
+                        .padding(.top, -120) // Adjust top padding
+                        .padding(.horizontal, -16)
                     
-                    Text("Create an Account")
-                        .font(.custom("HelveticaNeue", size: 18))
-                        .fontWeight(.bold)
-                        .padding(.top, -10)
-                    
-                    Divider()
-                        .padding(.top, 10)
-                        .padding(.bottom, 12)
-                    
-                    VStack(spacing: 20) {
-                        TextField("Name", text: $name)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                        
-                        TextField("Email", text: $email)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                        
-                        TextField("Phone Number", text: $phoneNumber)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                            .keyboardType(.numberPad)
-                        
-                        SecureField("Password", text: $password)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                        
-                        Button(action: {
-                            // Perform registration action
-                        }) {
-                            Text("Register")
-                                .foregroundColor(.white)
+                    NavigationView {
+                        VStack {
+                            Text("Create Account")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 20)
+                                .padding(.top, -10)
+                            
+                            
+                            Divider()
+                                .padding(.bottom, 20)
+                            
+                            TextField("Email", text: $emailText)
+                                .focused($focusField, equals: .email)
                                 .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                                .padding(.horizontal)
+                                .background(Color("secondaryLogoColor")) // Set your desired background color here
+                                .cornerRadius(12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(isValidEmail ? (focusField == .email ? Color("logoColor") : Color.white) : Color.red, lineWidth: 3)
+                                )
+                                .padding(.bottom, 20) // Move padding here if needed
+                                .onChange(of: emailText) { newValue in
+                                    isValidEmail = Validator.validateEmail(newValue)
+                                }
+                            
+                            if !isValidEmail {
+                                HStack {
+                                    Text("Your email is not valid")
+                                        .foregroundColor(.red)
+                                        .padding(.leading)
+                                    Spacer()
+                                }
+                            }
+                            
+                            TextField("Contact Number", text: $contactNoText)
+                                .focused($focusField, equals: .phoneNumber)
+                                .padding()
+                                .background(Color("secondaryLogoColor")) // Set your desired background color here
+                                .cornerRadius(12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(isValidPhoneNumber ? (focusField == .phoneNumber ? Color("logoColor") : Color.white) : Color.red, lineWidth: 3)
+                                )
+                                .padding(.bottom, 20) // Move padding here if needed
+                                .onChange(of: contactNoText) { newValue in
+                                    isValidPhoneNumber = Validator.validatePhoneNumber(newValue)
+                                }
+                            
+                            if !isValidPhoneNumber {
+                                HStack {
+                                    Text("Your phone number is not valid")
+                                        .foregroundColor(.red)
+                                        .padding(.leading)
+                                    Spacer()
+                                }
+                            }
+                            
+                            TextField("Password", text: $passwordText)
+                                .focused($focusField, equals: .password)
+                                .padding()
+                                .background(Color("secondaryLogoColor")) // Set your desired background color here
+                                .cornerRadius(12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(isValidPassword ? (focusField == .password ? Color("logoColor") : Color.white) : Color.red, lineWidth: 3)
+                                )
+                                .padding(.bottom, 20) // Move padding here if needed
+                                .onChange(of: passwordText) { newValue in
+                                    isValidPassword = Validator.validatePassword(newValue)
+                                }
+                            
+                            if !isValidPassword {
+                                HStack {
+                                    Text("Your Password is not valid")
+                                        .foregroundColor(.red)
+                                        .padding(.leading)
+                                    Spacer()
+                                }
+                            }
+                            
+                            Button(action: {
+                                // Perform sign-up action
+                            }) {
+                                Text("Sign up")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                                    .opacity(canProceed ? 1.0 : 0.5)
+                                    .disabled(!canProceed)
+                            }
+                            .padding(.trailing)
                         }
+                        .padding()
                     }
-                    .padding()
+                    Spacer()
+                    
+                    Button(action: {
+                        // Perform create new account action
+                    }) {
+                        Text("Create new Account")
+                            .foregroundColor(.blue)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .padding(.horizontal)
+                    }
+                    .padding(.bottom)
+                    
+                    Spacer()
                 }
+                .padding()
             }
         }
     }
 }
 
-#Preview {
-    RegisterView()
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView()
+    }
 }
+

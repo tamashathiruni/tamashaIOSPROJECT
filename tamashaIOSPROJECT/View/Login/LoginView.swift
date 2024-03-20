@@ -7,15 +7,29 @@
 
 import SwiftUI
 
+enum FocusField {
+    case email
+    case password
+    case phoneNumber
+}
 struct LoginView: View {
     
-    @StateObject var loginVM = MainViewModel.shared;
+    @State private var emailText = ""
+    @State private var passwordText = ""
+    @State private var isValidEmail = true
+    @State private var isValidPassword = true
+    
+    var canProceed: Bool {
+        Validator.validateEmail(emailText) &&
+                                Validator.validatePassword(passwordText)
+    }
+    
+    @FocusState private var focusField: FocusField?
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color("logoColor")
-                    .opacity(0.4) // Set the opacity to 40%
+                Color("yourDesiredBackgroundColor") // Set your desired background color here
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
@@ -23,57 +37,66 @@ struct LoginView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: geometry.size.width * 1, height: 300) // Adjust size as needed
-                        .padding(.top, -110) // Adjust top padding
-                        .padding(.horizontal, -14)
+                        .padding(.top, -120) // Adjust top padding
+                        .padding(.horizontal, -16)
                     
-                    Text("Login")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 20)
-                        .padding(.top, -10)
-                    
-                    Divider()
-                        .padding(.bottom, 20)
-                    
-                    LineTextField(txt: $loginVM.txtEmail, title: "Email", placeholder:"Email", keyboardType: .emailAddress)
-                    
-                    LineTextField(txt: $loginVM.txtPassword, title: "Password", placeholder:"Password")
-                    
-                    SecureField("Password", text: $loginVM.txtPassword)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
-                        .padding(.bottom, 20)
+                    NavigationStack {
+                        VStack {
+                            Text("Login")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 20)
+                                .padding(.top, -10)
+                        
+                        
+                        Divider()
+                            .padding(.bottom, 20)
+                            
+                            EmailTextField(emailText: $emailText, isValidEmail: $isValidEmail)
+                            
+                            PasswordTextField(passwordText: $passwordText, isValidPassword: $isValidPassword)
+                            
+                            HStack{
+                                Spacer()
+                                Button {
+                                    //
+                                } label: {
+                                    Text("Forgot your Password?")
+                                        .foregroundColor(Color.blue)
+                                        .font(.system(size:14, weight: .semibold))
+                                        .padding()
+                                }
+                            }
+                        
+                        Button(action: {
+                            // Perform login action
+                        }) {
+                            Text("Login")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .padding(.horizontal)
+                                .opacity(canProceed ? 1.0 : 0.5)
+                                .disabled(!canProceed)
+                        }
+                        .padding(.trailing)
+                        }
+                        .edgesIgnoringSafeArea(.all)
+                    }
+                    Spacer()
                     
                     Button(action: {
                         // Perform login action
                     }) {
-                        Text("Login")
-                            .foregroundColor(.white)
-                            .padding()
+                        Text("Create new Account")
+                            .foregroundColor(.blue)
                             .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                            .padding()
                             .padding(.horizontal)
                     }
-                    
-                    Text("New Customer?")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .padding(.top, 30)
-                    
-                    Divider()
-                        .padding(.top, 20)
-                        .padding(.bottom, 10)
-                    
-                    NavigationLink(destination: RegisterView()) { // Navigate to RegisterView
-                        Text("Create an Account")
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
-                    }
+                    .padding(.bottom)
                     
                     Spacer()
                 }
@@ -86,5 +109,71 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+    }
+}
+
+struct EmailTextField: View {
+    
+    @Binding var emailText: String
+    @Binding var isValidEmail: Bool
+    @FocusState private var focusField: FocusField?
+    
+    var body: some View {
+        VStack {
+            TextField("Email", text: $emailText)
+                .focused($focusField, equals: .email)
+                .padding()
+                .background(Color("secondaryLogoColor")) // Set your desired background color here
+                .cornerRadius(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(isValidEmail ? (focusField == .email ? Color("logoColor") : Color.white) : Color.red, lineWidth: 3)
+                )
+                .padding(.bottom, 20) // Move padding here if needed
+                .onChange(of: emailText) { newValue in
+                    isValidEmail = Validator.validateEmail(newValue)
+                }
+            if !isValidEmail {
+                HStack {
+                    Text("Your email is not valid")
+                        .foregroundColor(.red)
+                        .padding(.leading)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+struct PasswordTextField: View {
+    
+    @Binding var passwordText: String
+    @Binding var isValidPassword: Bool
+    @FocusState private var focusField: FocusField?
+    
+    var body: some View {
+        VStack {
+            TextField("Password", text: $passwordText)
+                .focused($focusField, equals: .password)
+                .padding()
+                .background(Color("secondaryLogoColor")) // Set your desired background color here
+                .cornerRadius(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(isValidPassword ? (focusField == .password ? Color("logoColor") : Color.white) : Color.red, lineWidth: 3)
+                )
+                .padding(.bottom, 20) // Move padding here if needed
+                .onChange(of: passwordText) { newValue in
+                    isValidPassword = Validator.validatePassword(newValue)
+                }
+            if !isValidPassword {
+                HStack {
+                    Text("Your Password is not valid")
+                        .foregroundColor(.red)
+                        .padding(.leading)
+                    Spacer()
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		004954132BAA9D7E004E478B /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004954122BAA9D7E004E478B /* ProductCard.swift */; };
+		004954152BAAAC6F004E478B /* ShopWomenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004954142BAAAC6F004E478B /* ShopWomenView.swift */; };
+		004954182BAAD4EA004E478B /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004954172BAAD4EA004E478B /* Validations.swift */; };
 		D03367FA2BA809DF006E6949 /* tamashaIOSPROJECTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03367F92BA809DF006E6949 /* tamashaIOSPROJECTApp.swift */; };
 		D03367FC2BA809DF006E6949 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03367FB2BA809DF006E6949 /* ContentView.swift */; };
 		D03367FE2BA809E0006E6949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03367FD2BA809E0006E6949 /* Assets.xcassets */; };
@@ -16,14 +19,15 @@
 		D033681B2BA831FB006E6949 /* WelcomeSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033681A2BA831FB006E6949 /* WelcomeSecondView.swift */; };
 		D09D5D8F2BA951A500295537 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D8E2BA951A500295537 /* LoginView.swift */; };
 		D09D5D912BA9632A00295537 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D902BA9632A00295537 /* RegisterView.swift */; };
-		D09D5D932BA9860100295537 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D922BA9860100295537 /* MainViewModel.swift */; };
 		D09D5D952BA990A900295537 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D942BA990A900295537 /* LineTextField.swift */; };
-		D09D5D972BA99C3600295537 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D962BA99C3600295537 /* HomeViewModel.swift */; };
 		D09D5D9A2BA99D5200295537 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D992BA99D5200295537 /* HomeView.swift */; };
 		D09D5DA02BA9A48B00295537 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D5D9F2BA9A48B00295537 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		004954122BAA9D7E004E478B /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
+		004954142BAAAC6F004E478B /* ShopWomenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopWomenView.swift; sourceTree = "<group>"; };
+		004954172BAAD4EA004E478B /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		D03367F62BA809DF006E6949 /* tamashaIOSPROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tamashaIOSPROJECT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03367F92BA809DF006E6949 /* tamashaIOSPROJECTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tamashaIOSPROJECTApp.swift; sourceTree = "<group>"; };
 		D03367FB2BA809DF006E6949 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,9 +38,7 @@
 		D033681A2BA831FB006E6949 /* WelcomeSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSecondView.swift; sourceTree = "<group>"; };
 		D09D5D8E2BA951A500295537 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D09D5D902BA9632A00295537 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		D09D5D922BA9860100295537 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D09D5D942BA990A900295537 /* LineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
-		D09D5D962BA99C3600295537 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D09D5D992BA99D5200295537 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D09D5D9F2BA9A48B00295537 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +54,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		004954112BAA9D4D004E478B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				004954122BAA9D7E004E478B /* ProductCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		004954162BAAD469004E478B /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				004954172BAAD4EA004E478B /* Validations.swift */,
+			);
+			path = Validations;
+			sourceTree = "<group>";
+		};
 		D03367ED2BA809DF006E6949 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +89,8 @@
 		D03367F82BA809DF006E6949 /* tamashaIOSPROJECT */ = {
 			isa = PBXGroup;
 			children = (
+				004954162BAAD469004E478B /* Validations */,
+				004954112BAA9D4D004E478B /* Components */,
 				D033680B2BA80B9E006E6949 /* UICommon */,
 				D033680A2BA80B62006E6949 /* ViewModel */,
 				D03368092BA80B59006E6949 /* Model */,
@@ -95,7 +115,6 @@
 		D03368072BA80B1D006E6949 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D09D5D9B2BA99E1100295537 /* MainTab */,
 				D09D5D982BA99D3900295537 /* Home */,
 				D09D5D8D2BA9518600295537 /* Login */,
 				D033680C2BA80BC5006E6949 /* Welcome */,
@@ -114,8 +133,6 @@
 		D033680A2BA80B62006E6949 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D09D5D922BA9860100295537 /* MainViewModel.swift */,
-				D09D5D962BA99C3600295537 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -150,15 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				D09D5D992BA99D5200295537 /* HomeView.swift */,
+				004954142BAAAC6F004E478B /* ShopWomenView.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		D09D5D9B2BA99E1100295537 /* MainTab */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MainTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,16 +244,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D033681B2BA831FB006E6949 /* WelcomeSecondView.swift in Sources */,
-				D09D5D972BA99C3600295537 /* HomeViewModel.swift in Sources */,
 				D03367FC2BA809DF006E6949 /* ContentView.swift in Sources */,
 				D09D5D9A2BA99D5200295537 /* HomeView.swift in Sources */,
 				D033680E2BA80BE4006E6949 /* WelcomeView.swift in Sources */,
 				D09D5DA02BA9A48B00295537 /* Product.swift in Sources */,
 				D09D5D912BA9632A00295537 /* RegisterView.swift in Sources */,
-				D09D5D932BA9860100295537 /* MainViewModel.swift in Sources */,
 				D09D5D8F2BA951A500295537 /* LoginView.swift in Sources */,
+				004954152BAAAC6F004E478B /* ShopWomenView.swift in Sources */,
 				D03367FA2BA809DF006E6949 /* tamashaIOSPROJECTApp.swift in Sources */,
 				D09D5D952BA990A900295537 /* LineTextField.swift in Sources */,
+				004954182BAAD4EA004E478B /* Validations.swift in Sources */,
+				004954132BAA9D7E004E478B /* ProductCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
