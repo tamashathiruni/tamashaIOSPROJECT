@@ -9,7 +9,15 @@ import SwiftUI
 
 struct LoginHeader: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: "list.bullet")
+            Image("logo")
+                .resizable()
+                .frame(width: 300, height: 210)                .padding(.horizontal, 200)
+                .padding(.vertical)
+            
+        }
+        .background(Color("logoColor"))
     }
 }
 

@@ -1,20 +1,20 @@
 //
-//  RegisterView.swift
+//  LoginView.swift
 //  tamashaIOSPROJECT
 //
 //  Created by NIBM-LAB04-PC02 on 2024-03-19.
-//
+// LoginView
 
 import SwiftUI
 
-struct RegisterView: View {
+struct LoginView: View {
     
     @State private var emailText = ""
     @State private var passwordText = ""
     @State private var phoneNumber = ""
     @State private var isValidEmail = true
     @State private var isValidPassword = true
-    @State private var isValidphoneNumber = true RegisterView
+    @State private var isValidphoneNumber = true 
     
     var canProceed: Bool {
         Validator.validateEmail(emailText) &&
@@ -24,22 +24,11 @@ struct RegisterView: View {
     @FocusState private var focusField: FocusField?
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Color("yourDesiredBackgroundColor") // Set your desired background color here
-                    .edgesIgnoringSafeArea(.all)
-                
                 VStack {
-                    Image("logoLandscape")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: geometry.size.width * 1, height: 300) // Adjust size as needed
-                        .padding(.top, -120) // Adjust top padding
-                        .padding(.horizontal, -16)
-                    
+                    LoginHeader()
                     NavigationStack {
                         VStack {
-                            Text("Crate Account")
+                            Text("Login")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .padding(.bottom, 20)
@@ -65,19 +54,22 @@ struct RegisterView: View {
                                         .padding()
                                 }
                             }
+
                         
                         Button(action: {
                             // Perform login action
                         }) {
-                            Text("Login")
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                                .opacity(canProceed ? 1.0 : 0.5)
+                            NavigationLink(destination: HomeView()) {
+                                Text("Login")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                                    .opacity(canProceed ? 1.0 : 0.5)
                                 .disabled(!canProceed)
+                            }
                         }
                         .padding(.trailing)
                         }
@@ -86,28 +78,29 @@ struct RegisterView: View {
                     Spacer()
                     
                     Button(action: {
-                        // Perform login action
+                        // Perform action to navigate to RegisterView
                     }) {
-                        Text("Create new Account")
-                            .foregroundColor(.blue)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .padding(.horizontal)
+                        NavigationLink(destination: RegisterView()) {
+                            Text("Create new Account")
+                                .foregroundColor(.blue)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .padding(.horizontal)
+                        }
                     }
+
                     .padding(.bottom)
                     
                     Spacer()
                 }
                 .padding()
-            }
-        }
-
+            
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        LoginView()
     }
 }
 

@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct CartView: View {
+    @EnvironmentObject var cartManager: CartManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Header()
+            Text("My Cart")
+                .bold()
+                .font(.system(size: 20))
+            
+            ScrollView{
+                if cartManager.products.count > 0 {
+                    ForEach(cartManager.products, id: \.id) {
+                        product in
+                        ProductRow(product: product)
+                    }
+                    
+                    HStack {
+                        Text("Your Cart Total is ")
+                        Spacer()
+                        Text("LKR \(cartManager.total).00")
+                            .bold()
+                    }
+                    .padding()
+                } else {
+                    Text("Your cart is empty")
+                }
+            }
+            Footer()
+        }
     }
 }
 
-#Preview {
-    CartView()
+struct CartView_Previews: PreviewProvider {
+    static var previews: some View {
+        CartView()
+            .environmentObject(CartManager())
+    }
 }
