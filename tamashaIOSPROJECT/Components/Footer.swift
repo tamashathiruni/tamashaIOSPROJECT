@@ -9,7 +9,25 @@ import SwiftUI
 
 struct Footer: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0.0) {
+            Divider()
+                .padding(.bottom, 10)
+            
+            HStack {
+                Spacer()
+                Image(systemName: "house.fill")
+                Spacer()
+                Image(systemName: "magnifyingglass")
+                Spacer()
+                Image(systemName: "bell")
+                Spacer()
+                Image(systemName: "person.circle")
+                Spacer()
+            }
+            .padding(.horizontal, 30)
+            .padding(.vertical, 3)
+        }
+        .background(Color("logoColor"))
     }
 }
 

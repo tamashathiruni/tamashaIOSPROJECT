@@ -1,9 +1,9 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  tamashaIOSPROJECT
 //
 //  Created by NIBM-LAB04-PC02 on 2024-03-19.
-//
+//RegisterView
 
 import SwiftUI
 
@@ -12,7 +12,7 @@ enum FocusField {
     case password
     case phoneNumber
 }
-struct LoginView: View {
+struct RegisterView: View {
     
     @State private var emailText = ""
     @State private var passwordText = ""
@@ -29,27 +29,14 @@ struct LoginView: View {
     @FocusState private var focusField: FocusField?
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Color("yourDesiredBackgroundColor") // Set your desired background color here
-                    .edgesIgnoringSafeArea(.all)
-                
                 VStack {
-                    Image("logoLandscape")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: geometry.size.width * 1, height: 300) // Adjust size as needed
-                        .padding(.top, -120) // Adjust top padding
-                        .padding(.horizontal, -16)
-                    
+                    LoginHeader()
                     NavigationStack {
                         VStack {
                             Text("Create Account")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .padding(.bottom, 20)
-                                .padding(.top, -10)
-                        
                         
                         Divider()
                             .padding(.bottom, 20)
@@ -60,9 +47,8 @@ struct LoginView: View {
                             
                             phoneNumberTextField(phoneNumberText: $phoneNumber, isValidphoneNumber: $isValidphoneNumber)
                             
-                        
                         Button(action: {
-                            // Perform login action
+                            // Perform RegisterView action
                         }) {
                             Text("Sign up")
                                 .foregroundColor(.white)
@@ -81,27 +67,29 @@ struct LoginView: View {
                     Spacer()
                     
                     Button(action: {
-                        // Perform login action
+                        // Perform RegisterView action
                     }) {
-                        Text("Log in")
-                            .foregroundColor(.blue)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .padding(.horizontal)
+                        NavigationLink(destination: LoginView()) {
+                            Text("Log in")
+                                .foregroundColor(.blue)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .padding(.horizontal)
+                        }
                     }
                     .padding(.bottom)
+
                     
                     Spacer()
                 }
                 .padding()
-            }
-        }
+            
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        RegisterView()
     }
 }
 
@@ -203,4 +191,3 @@ struct phoneNumberTextField: View {
         }
     }
 }
-
