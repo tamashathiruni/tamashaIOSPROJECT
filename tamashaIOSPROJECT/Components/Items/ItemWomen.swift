@@ -95,11 +95,9 @@ struct ColorDotView: View {
 struct DescriptionView: View {
     var body: some View {
         VStack (alignment: .leading) {
-            //                Title
             Text("Floral Shirt")
                 .font(.title)
                 .fontWeight(.bold)
-            //                Rating
             HStack (spacing: 4) {
                 ForEach(0 ..< 5) { item in
                     Image(systemName: "star.fill")
@@ -117,7 +115,7 @@ struct DescriptionView: View {
                 .lineSpacing(8.0)
                 .opacity(0.6)
             
-            //                Info
+            
             HStack (alignment: .top) {
                 VStack (alignment: .leading) {
                     Text("Size")
@@ -146,7 +144,7 @@ struct DescriptionView: View {
             }
             .padding(.vertical)
             
-            //                Colors and Counter
+            
             HStack {
                 VStack (alignment: .leading) {
                     Text("Colors")

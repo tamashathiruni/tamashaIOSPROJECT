@@ -22,7 +22,6 @@ struct ShopWomenView: View {
                     }
                     .padding()
             }
-            .background(Color("logoColor"))
             .navigationTitle("WOMENS WEAR")
             .toolbar {
                 NavigationLink {
@@ -35,7 +34,8 @@ struct ShopWomenView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        Footer()
+        //Footer()
+        
     }
 }
 

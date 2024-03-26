@@ -11,7 +11,7 @@ struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
     var body: some View {
         VStack {
-            Header()
+            //Header()
             Text("My Cart")
                 .bold()
                 .font(.system(size: 20))
@@ -30,11 +30,15 @@ struct CartView: View {
                             .bold()
                     }
                     .padding()
+
+                    PaymentButton(action: {}) //apple pay button
+                    .padding()
+
                 } else {
                     Text("Your cart is empty")
                 }
             }
-            Footer()
+            //Footer()
         }
     }
 }

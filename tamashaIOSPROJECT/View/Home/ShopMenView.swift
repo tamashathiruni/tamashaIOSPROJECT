@@ -23,7 +23,6 @@ struct ShopMenView: View {
                     }
                     .padding()
             }
-            .background(Color("logoColor"))
             .navigationTitle("MENS WEAR")
             .toolbar {
                 NavigationLink {
@@ -36,7 +35,7 @@ struct ShopMenView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        Footer()
+        //Footer()
     }
 }
 

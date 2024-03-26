@@ -11,15 +11,17 @@ struct Header: View {
     @StateObject var cartManager = CartManager()
     
     var body: some View {
-        HStack {
-            Image(systemName: "list.bullet")
-            Image("logo")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .padding(.horizontal, 100)
-            NavigationLink(destination: CartView().environmentObject(cartManager)) {
-                            CartButton(numberOfProducts: cartManager.products.count)
-                        }
+        VStack {
+            HStack {
+                Image(systemName: "list.bullet")
+                Image("logo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .padding(.horizontal, 100)
+                NavigationLink(destination: CartView().environmentObject(cartManager)) {
+                    CartButton(numberOfProducts: cartManager.products.count)
+                }
+            }
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 3)
