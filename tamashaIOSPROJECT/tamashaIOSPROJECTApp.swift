@@ -11,7 +11,7 @@ import SwiftUI
 struct tamashaIOSPROJECTApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            CustomTabBarView()
         }
     }
 }

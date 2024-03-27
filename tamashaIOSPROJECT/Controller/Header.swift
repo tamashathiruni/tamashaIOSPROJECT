@@ -24,7 +24,7 @@ struct Header: View {
             }
         }
         .padding(.horizontal, 30)
-        .padding(.vertical, 3)
+        .padding(.vertical, 0)
         .background(Color("logoColor"))
     }
 }

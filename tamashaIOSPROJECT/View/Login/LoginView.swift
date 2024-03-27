@@ -25,8 +25,10 @@ struct LoginView: View {
     
     var body: some View {
                 VStack {
-                    LoginHeader()
-                    NavigationStack {
+                    //LoginHeader()
+                       // .padding(.bottom)
+                    
+                   NavigationStack {
                         VStack {
                             Text("Login")
                                 .font(.largeTitle)
@@ -75,7 +77,8 @@ struct LoginView: View {
                         }
                         .edgesIgnoringSafeArea(.all)
                     }
-                    Spacer()
+                   .navigationBarBackButtonHidden(true)
+                    //Spacer()
                     
                     Button(action: {
                         // Perform action to navigate to RegisterView

@@ -83,6 +83,7 @@ struct Welcome2Page: View {
                 }
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

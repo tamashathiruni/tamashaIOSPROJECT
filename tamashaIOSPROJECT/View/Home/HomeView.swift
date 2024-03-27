@@ -11,18 +11,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-                VStack {
-                    Header()
-                    Spacer()
-                    VStack{
-                        
-                    }
-                    Spacer()
-                }
-            }
-            Spacer()
-            //Footer()
+            Header()
+            MyProfileView()
+                .padding(.top, 200)
             CustomTabBarView()
         }
     }

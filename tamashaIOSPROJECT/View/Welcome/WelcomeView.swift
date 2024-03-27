@@ -32,6 +32,7 @@ struct WelcomeView: View {
             .accentColor(Color.black)
             .navigationBarHidden(true) // Hide the navigation bar
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

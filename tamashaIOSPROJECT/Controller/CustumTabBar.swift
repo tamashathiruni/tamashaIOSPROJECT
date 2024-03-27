@@ -61,7 +61,7 @@ struct CustomTabBar: View {
 
 struct HouseView: View {
     var body: some View {
-        Text("Home")
+        MainView()
     }
 }
 
@@ -79,7 +79,7 @@ struct PersonView: View {
 
 struct FevouriteView: View {
     var body: some View {
-        FavouriteView()
+        CartView()
     }
 }
 

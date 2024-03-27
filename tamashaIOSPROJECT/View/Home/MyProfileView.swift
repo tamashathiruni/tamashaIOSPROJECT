@@ -13,7 +13,7 @@ struct MyProfileView: View {
             VStack {
                 ScrollView {
                     VStack {
-                        Header()
+                        //Header()
                         Spacer()
                         
                         NavigationLink(destination: PersonalDetailsView()) {

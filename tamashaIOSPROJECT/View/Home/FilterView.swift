@@ -10,7 +10,7 @@ import SwiftUI
 struct FilterView: View {
     var body: some View {
         VStack {
-            Header()
+            //Header()
             Spacer()
             VStack {
                 HStack {
@@ -21,7 +21,7 @@ struct FilterView: View {
                                                 .frame(width: 200, height: 200) // Adjust size as needed
                                                 .padding(.horizontal, 1)
                                         }
-                        NavigationLink(destination: ShopWomenView()) {
+                        NavigationLink(destination: ShopMenView()) {
                                             Image("man3") // Replace "shop_women_icon" with the name of your image asset
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)

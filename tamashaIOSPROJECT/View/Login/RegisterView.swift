@@ -30,7 +30,7 @@ struct RegisterView: View {
     
     var body: some View {
                 VStack {
-                    LoginHeader()
+                    //LoginHeader()
                     NavigationStack {
                         VStack {
                             Text("Create Account")
@@ -64,6 +64,7 @@ struct RegisterView: View {
                         }
                         .edgesIgnoringSafeArea(.all)
                     }
+                    .navigationBarBackButtonHidden(true)
                     Spacer()
                     
                     Button(action: {

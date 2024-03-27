@@ -9,18 +9,18 @@ import Foundation
 
 struct ProductMens: Identifiable {
     var id = UUID()
-    var name: String
-    var image: String
-    var price: Int
+    var namem: String
+    var imagem: String
+    var pricem: Int
 }
 
-var productlistmen = [ProductMens(name: "Plain Shirt", image: "man1", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man2", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man3", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man4", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man5", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man6", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man7", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man8", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man9", price: 2800),
-                      ProductMens(name: "Plain Shirt", image: "man10", price: 2800)]
+var productlistmen = [ProductMens(namem: "Plain Shirt", imagem: "man1", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man2", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man3", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man4", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man5", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man6", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man7", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man8", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man9", pricem: 2800),
+                      ProductMens(namem: "Plain Shirt", imagem: "man10", pricem: 2800)]

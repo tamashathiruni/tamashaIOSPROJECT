@@ -7,6 +7,7 @@ struct CustomTabBarView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Header()
                 Spacer()
                 VStack(spacing: 0.0) {
                     

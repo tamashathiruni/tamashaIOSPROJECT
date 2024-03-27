@@ -10,7 +10,7 @@ import SwiftUI
 struct FavouriteView: View {
     var body: some View {
         VStack {
-            Header()
+            //Header()
             Spacer()
             Text("Favourite View")
         }
