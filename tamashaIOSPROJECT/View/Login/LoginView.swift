@@ -24,61 +24,53 @@ struct LoginView: View {
     @FocusState private var focusField: FocusField?
     
     var body: some View {
+        VStack {
+            NavigationStack {
                 VStack {
-                    //LoginHeader()
-                       // .padding(.bottom)
+                    Text("Login")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 20)
+                        .padding(.top, -10)
                     
-                   NavigationStack {
-                        VStack {
-                            Text("Login")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 20)
-                                .padding(.top, -10)
-                        
-                        
-                        Divider()
-                            .padding(.bottom, 20)
-                            
-                            EmailTextField(emailText: $emailText, isValidEmail: $isValidEmail)
-                            
-                            PasswordTextField(passwordText: $passwordText, isValidPassword: $isValidPassword)
-                            
-                            
-                            HStack{
-                                Spacer()
-                                Button {
-                                    //
-                                } label: {
-                                    Text("Forgot your Password?")
-                                        .foregroundColor(Color.blue)
-                                        .font(.system(size:14, weight: .semibold))
-                                        .padding()
-                                }
-                            }
-
-                        
-                        Button(action: {
-                            // Perform login action
-                        }) {
-                            NavigationLink(destination: HomeView()) {
-                                Text("Login")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.blue)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal)
-                                    .opacity(canProceed ? 1.0 : 0.5)
-                                .disabled(!canProceed)
-                            }
+                    
+                    Divider()
+                        .padding(.bottom, 20)
+                    
+                    EmailTextField(emailText: $emailText, isValidEmail: $isValidEmail)
+                    
+                    PasswordTextField(passwordText: $passwordText, isValidPassword: $isValidPassword)
+                    
+                    
+                    HStack{
+                        Spacer()
+                        Button {
+                            //
+                        } label: {
+                            Text("Forgot your Password?")
+                                .foregroundColor(Color.blue)
+                                .font(.system(size:14, weight: .semibold))
+                                .padding()
                         }
-                        .padding(.trailing)
-                        }
-                        .edgesIgnoringSafeArea(.all)
                     }
-                   .navigationBarBackButtonHidden(true)
-                    //Spacer()
+                    
+                    
+                    Button(action: {
+                        // Perform login action
+                    }) {
+                        NavigationLink(destination: CustomTabBarView()) {
+                            Text("Login")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .padding(.horizontal)
+                                .opacity(canProceed ? 1.0 : 0.5)
+                                .disabled(!canProceed)
+                        }
+                    }
+                    .padding(.trailing)
                     
                     Button(action: {
                         // Perform action to navigate to RegisterView
@@ -89,16 +81,18 @@ struct LoginView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .padding(.horizontal)
+                                .padding(.bottom, -100)
                         }
                     }
-
-                    .padding(.bottom)
-                    
-                    Spacer()
                 }
-                .padding()
-            
+//                .edgesIgnoringSafeArea(.all)
+            }
+        }
+        .padding()
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarBackButtonHidden(true)
     }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {

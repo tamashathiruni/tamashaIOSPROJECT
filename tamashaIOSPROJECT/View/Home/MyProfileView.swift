@@ -8,24 +8,59 @@
 import SwiftUI
 
 struct MyProfileView: View {
+    @State private var name = ""
+    @State private var newNo = ""
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView {
                     VStack {
                         //Header()
+                        Text("Hi There")
+                            .font(.system(size: 22))
+                            .fontWeight(.medium)
+                            .padding(.horizontal)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 20)
+                        
                         Spacer()
                         
-                        NavigationLink(destination: PersonalDetailsView()) {
-                            ProfileOptionRow(title: "Edit Personal Details", icon: "person.fill")
+                        VStack(alignment: .leading) {
+                            Text("Edit Personal Details")
+                                .font(.title3)
+                            
+                            TextField("Name", text: $name)
+                                .padding()
+                                .cornerRadius(8)
+                            
+                            Divider()
+                                .padding(.top, -10)
+                            
+                            TextField("Contact Number", text: $newNo)
+                                .padding()
+                                .cornerRadius(8)
+                            
+                            Divider()
+                                .padding(.top, -10)
                         }
+                        Text("Save Changes")
+                            .padding()
+                            .frame(width: 150, height: 20)
+                            .padding()
+                            .background(Color.gray.opacity(0.5))
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                            .multilineTextAlignment(.trailing)
+                            .padding(.bottom, 30)
+                        
+                        Spacer()
                         
                         NavigationLink(destination: Cart()) {
-                            ProfileOptionRow(title: "View Cart", icon: "cart.fill")
+                            ProfileOptionRow(title: "Your Orders", icon: "cart.fill")
                         }
                         
-                        NavigationLink(destination: WishlistView()) {
-                            ProfileOptionRow(title: "View Wishlist", icon: "heart.fill")
+                        NavigationLink(destination: NotifyView()) {
+                            ProfileOptionRow(title: "Notifications", icon: "bell.fill")
                         }
                     }
                     .padding()
@@ -69,20 +104,14 @@ struct ProfileOptionRow: View {
 }
 
 // navigation destinations
-struct PersonalDetailsView: View {
-    var body: some View {
-        Text("Personal Details View")
-    }
-}
-
 struct Cart: View {
     var body: some View {
         CartView()
     }
 }
 
-struct WishlistView: View {
+struct NotifyView: View {
     var body: some View {
-        Text("Wishlist View")
+        NotificationView()
     }
 }

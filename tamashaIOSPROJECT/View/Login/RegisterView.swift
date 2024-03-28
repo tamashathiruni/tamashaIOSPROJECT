@@ -29,27 +29,28 @@ struct RegisterView: View {
     @FocusState private var focusField: FocusField?
     
     var body: some View {
+        VStack {
+            //LoginHeader()
+            NavigationStack {
                 VStack {
-                    //LoginHeader()
-                    NavigationStack {
-                        VStack {
-                            Text("Create Account")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 20)
-                        
-                        Divider()
-                            .padding(.bottom, 20)
-                            
-                            EmailTextField(emailText: $emailText, isValidEmail: $isValidEmail)
-                            
-                            PasswordTextField(passwordText: $passwordText, isValidPassword: $isValidPassword)
-                            
-                            phoneNumberTextField(phoneNumberText: $phoneNumber, isValidphoneNumber: $isValidphoneNumber)
-                            
-                        Button(action: {
-                            // Perform RegisterView action
-                        }) {
+                    Text("Create Account")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 20)
+                    
+                    Divider()
+                        .padding(.bottom, 20)
+                    
+                    EmailTextField(emailText: $emailText, isValidEmail: $isValidEmail)
+                    
+                    PasswordTextField(passwordText: $passwordText, isValidPassword: $isValidPassword)
+                    
+                    phoneNumberTextField(phoneNumberText: $phoneNumber, isValidphoneNumber: $isValidphoneNumber)
+                    
+                    Button(action: {
+                        // Perform RegisterView action
+                    }) {
+                        NavigationLink(destination: LoginView()) {
                             Text("Sign up")
                                 .foregroundColor(.white)
                                 .padding()
@@ -60,12 +61,8 @@ struct RegisterView: View {
                                 .opacity(canProceed ? 1.0 : 0.5)
                                 .disabled(!canProceed)
                         }
-                        .padding(.trailing)
-                        }
-                        .edgesIgnoringSafeArea(.all)
                     }
-                    .navigationBarBackButtonHidden(true)
-                    Spacer()
+                    //.padding(.trailing)
                     
                     Button(action: {
                         // Perform RegisterView action
@@ -76,15 +73,17 @@ struct RegisterView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .padding(.horizontal)
+                                .padding(.bottom, -100)
                         }
                     }
                     .padding(.bottom)
-
-                    
-                    Spacer()
                 }
-                .padding()
-            
+                
+            }
+        }
+        .padding()
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

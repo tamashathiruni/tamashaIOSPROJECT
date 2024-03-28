@@ -16,8 +16,8 @@ struct CustomTabBarView: View {
                         HouseView()
                     case .magnifyingglass:
                         SearchView()
-                    case .heart:
-                        FevouriteView()
+                    case .bell:
+                        NotificationView()
                     case .person:
                         PersonView()
                     }

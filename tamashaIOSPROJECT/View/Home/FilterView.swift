@@ -9,35 +9,56 @@ import SwiftUI
 
 struct FilterView: View {
     var body: some View {
-        VStack {
-            //Header()
-            Spacer()
+        NavigationView {
             VStack {
-                HStack {
-                        NavigationLink(destination: ShopWomenView()) {
-                                            Image("girl3") // Replace "shop_women_icon" with the name of your image asset
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 200, height: 200) // Adjust size as needed
-                                                .padding(.horizontal, 1)
-                                        }
-                        NavigationLink(destination: ShopMenView()) {
-                                            Image("man3") // Replace "shop_women_icon" with the name of your image asset
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 200, height: 200) // Adjust size as needed\
-                                                .padding(.horizontal, -20)
-                                        }
-                        
+                SearchBar()
+                    .padding(.bottom, -20)
+                ScrollView {
+                    VStack {
+                        ZStack {
+                            Image("filterViewWomen")
+                                .resizable()
+                                .frame(width: 300, height: 400)
+                                .padding(.bottom, -3)
+                                .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                            
+//                            Text("shop Women")
+//                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                                .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+//                                .padding(.bottom, -100)
+//                                .padding(.top, 300)
+//                                .padding(.trailing, 40)
+                            
+                            NavigationLink(destination: ShopWomenView()) {
+                                Text("Shop Women")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                                    .padding(.top, 300)
+                                    .padding(.bottom, -10)
+                                    .padding(.trailing, 40)
+                            }
+                        }
+                        ZStack {
+                            Image("filterViewMen")
+                                .resizable()
+                                .frame(width: 300, height: 400)
+                                .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                            Text("shop Men")
+                        }
                     }
-                .padding()
+                    .padding()
+                }
             }
-            Spacer()
-            //CustomTabBarView()
+            .navigationBarTitle("Profile")
+            .navigationBarHidden(true) // Hide the navigation bar for this view
         }
     }
 }
 
-#Preview {
-    FilterView()
+struct FilterView_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterView()
+    }
 }

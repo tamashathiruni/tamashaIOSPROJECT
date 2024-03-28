@@ -9,7 +9,7 @@ import SwiftUI
 enum Tab: String, CaseIterable {
     case house
     case magnifyingglass
-    case heart
+    case bell
     case person
     
 }
@@ -27,10 +27,10 @@ struct CustomTabBar: View {
             return .blue
         case .magnifyingglass:
             return .red
-        case .heart:
-            return .pink
+        case .bell:
+            return .blue
         case .person:
-            return .indigo
+            return Color("logoTextColor")
         }
     }
 
@@ -77,9 +77,9 @@ struct PersonView: View {
     }
 }
 
-struct FevouriteView: View {
+struct FevouritesView: View {
     var body: some View {
-        CartView()
+        NotificationView()
     }
 }
 
