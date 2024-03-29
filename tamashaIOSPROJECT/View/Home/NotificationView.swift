@@ -10,6 +10,7 @@ import SwiftUI
 struct NotificationView: View {
     var body: some View {
         Text("You haven't received any notifications yet")
+        
     }
 }
 

@@ -27,6 +27,7 @@ struct ProductCard: View {
                     Text("LKR \(product.price)")
                         .font(.caption)
                 }
+
                 .padding()
                 .frame(width: 180, alignment: .leading)
                 .background(.ultraThinMaterial)

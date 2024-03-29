@@ -22,14 +22,6 @@ struct FilterView: View {
                                 .padding(.bottom, -3)
                                 .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                             
-//                            Text("shop Women")
-//                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-//                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                                .frame(maxWidth: .infinity, alignment: .bottomTrailing)
-//                                .padding(.bottom, -100)
-//                                .padding(.top, 300)
-//                                .padding(.trailing, 40)
-                            
                             NavigationLink(destination: ShopWomenView()) {
                                 Text("Shop Women")
                                     .font(.title)
@@ -38,6 +30,7 @@ struct FilterView: View {
                                     .padding(.top, 300)
                                     .padding(.bottom, -10)
                                     .padding(.trailing, 40)
+                                    .foregroundColor(.white)
                             }
                         }
                         ZStack {
@@ -45,13 +38,23 @@ struct FilterView: View {
                                 .resizable()
                                 .frame(width: 300, height: 400)
                                 .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                            Text("shop Men")
+                            
+                            NavigationLink(destination: ShopMenView()) {
+                                Text("shop Men")
+                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .bottomLeading)
+                                    .padding(.leading, 40)
+                                    .padding(.bottom, -10)
+                                    .padding(.top, 200)
+                                .foregroundColor(.white)
+                            }
                         }
                     }
                     .padding()
                 }
             }
-            .navigationBarTitle("Profile")
+            .navigationBarTitle("Home")
             .navigationBarHidden(true) // Hide the navigation bar for this view
         }
     }

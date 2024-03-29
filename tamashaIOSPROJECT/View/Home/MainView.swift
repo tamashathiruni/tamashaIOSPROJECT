@@ -23,16 +23,17 @@ struct MainView: View {
                         VStack(alignment: .center, spacing: 5) {
                             Text("For Your Everyday Look ")
                                 .foregroundColor(.black)
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.bold)
                             Text("with ")
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.bold)
-                            + Text("Moana")
+                            + Text("MOANA")
                                 .foregroundColor(Color("logoTextColor"))
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.bold)
                         }
+                        .padding(.bottom, -10)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
@@ -45,14 +46,14 @@ struct MainView: View {
                                 }
                             }
                             .padding()
+                            .padding(.bottom, -10)
                         }
                         
                         Text("Popular")
-                            .font(.system(size: 22))
+                            .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .padding(.bottom, -10)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
@@ -63,18 +64,18 @@ struct MainView: View {
                             }
                             .padding(.leading)
                         }
+                        .padding(.bottom, -20)
                         
                         Text("Best Selling")
-                            .font(.system(size: 22))
+                            .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .padding(.bottom, -10)
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(productsPopular) { product in
-                                    PopularItemView(image: Image(product.image), size: 180)
+                                ForEach(productsBestSell) { product in
+                                    BestSellItemView(image: Image(product.image), size: 180)
                                 }
                                 .padding(.trailing)
                             }
@@ -145,16 +146,41 @@ struct PopularItemView: View {
                 .cornerRadius(20.0)
 
             Text("Floral Dress")
-                .font(.title)
                 .fontWeight(.bold)
 
             Text("LKR 2500")
-                .font(.title3)
-                .fontWeight(.bold)
         }
         .frame(width: size)
+        .padding(.horizontal, -20)
         .padding()
         .background(Color.white)
         .cornerRadius(20.0)
     }
 }
+
+struct BestSellItemView: View {
+    let image: Image
+    let size: CGFloat
+    //let name:
+    
+    var body: some View {
+        VStack {
+            image
+                .resizable()
+                .frame(width: size, height: 200 * (size/210))
+                .cornerRadius(20.0)
+
+            Text("Floral Dress")
+                .fontWeight(.bold)
+
+            Text("LKR 2500")
+        }
+        .frame(width: size)
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20.0)
+        .padding(.horizontal, -18)
+    }
+}
+
+
