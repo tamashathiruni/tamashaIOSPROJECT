@@ -60,6 +60,7 @@ struct MainView: View {
                                 ForEach(productsPopular) { product in
                                     PopularItemView(image: Image(product.image), size: 180)
                                 }
+                                
                                 .padding(.trailing)
                             }
                             .padding(.leading)

@@ -13,7 +13,8 @@ struct LoginHeader: View {
             Image(systemName: "list.bullet")
             Image("logo")
                 .resizable()
-                .frame(width: 300, height: 210)                .padding(.horizontal, 200)
+                .frame(width: 300, height: 210)
+                .padding(.horizontal, 200)
                 .padding(.vertical)
             
         }

@@ -10,34 +10,28 @@ import SwiftUI
 struct ItemCard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var cartManager = CartManager()
-    let images: [String] = ["girl3", "girl4", "girl5"]
+    let images: [String] = ["girl3", "slide1", "slide2"]
     
     var body: some View {
         VStack {
             //Header()
             ZStack {
-                ScrollView  {
-                    //Image("girl3")
-                    ImageSlideshowView(imageNames: images)
-                        //.resizable()
-                        //.aspectRatio(1,contentMode: .fit)
-                        //.edgesIgnoringSafeArea(.top)
-                }
-                .edgesIgnoringSafeArea(.top)
+                ImageSlideshowView(imageNames: images)
+                
+                //.edgesIgnoringSafeArea(.top)
+                
                 HStack {
                     Spacer()
                     
-                    Text("Add to Cart")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        //.foregroundColor(Color("Primary"))
+                    Image(systemName: "cart")
+                        .fontWeight(.medium)
+                        .foregroundColor(.black)
                         .padding()
-                        .padding(.horizontal, 8)
-                        .background(Color.black)
+                        .background(Color("logoColor"))
                         .cornerRadius(10.0)
-                    
-                    
+                        .padding(.top)
+                        .padding(.bottom, -30)
+                        .frame(width: 10, height: 100)
                 }
                 .padding()
                 .padding(.horizontal)
@@ -92,11 +86,10 @@ struct DescriptionView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            Text("Floral Shirt")
-                .font(.title)
-                .fontWeight(.bold)
-            Text("LKR 2590")
+            Text("Silk Blouse")
                 .font(.title3)
+                .fontWeight(.bold)
+            Text("LKR 2300")
                 .fontWeight(.bold)
             Text("Description")
                 .fontWeight(.medium)
@@ -107,6 +100,8 @@ struct DescriptionView: View {
             
             Text("Size")
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            
+            
             
             HStack (alignment: .top) {
                 Button(action: {
@@ -144,9 +139,6 @@ struct DescriptionView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical)
             
             HStack {
                 VStack (alignment: .leading) {
@@ -235,24 +227,6 @@ struct BackButton: View {
     }
 }
 
-//struct ImageSlideshowView: View {
-//    let imageNames: [String]
-//
-//    var body: some View {
-//        TabView {
-//            ForEach(imageNames, id: \.self) { imageName in
-//                Image(imageName)
-//                //.resizable()
-//                .aspectRatio(1,contentMode: .fit)
-//                //.edgesIgnoringSafeArea(.top)
-//            }
-//        }
-//        .tabViewStyle(PageTabViewStyle())
-//                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//    }
-//}
-
 struct ImageSlideshowView: View {
     let imageNames: [String]
 
@@ -260,13 +234,15 @@ struct ImageSlideshowView: View {
         TabView {
             ForEach(imageNames, id: \.self) { imageName in
                 Image(imageName)
-                    .resizable()
-                    .scaledToFill() // Use scaledToFit to fit the entire image within the view
-                    .frame(maxWidth: 200, maxHeight: 800) // Ensure the image fills the available space
+                .resizable()
+                .scaledToFill()
             }
         }
         .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.bottom)
     }
 }
+
 

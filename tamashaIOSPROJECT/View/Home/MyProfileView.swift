@@ -64,6 +64,14 @@ struct MyProfileView: View {
                         }
                     }
                     .padding()
+                    Spacer()
+                    Text("SIGN OUT")
+                        .padding(.top, 200)
+                    Spacer()
+                    
+                    Divider()
+                        .padding(.horizontal, 70)
+                        .padding(.top, 10)
                 }
             }
             .navigationBarTitle("Profile")

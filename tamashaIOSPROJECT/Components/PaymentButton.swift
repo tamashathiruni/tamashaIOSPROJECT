@@ -4,26 +4,48 @@
 //
 //  Created by NIBM-LAB04-PC05 on 2024-03-26.
 //
-
 import SwiftUI
 import PassKit
 
 // PaymentButton SwiftUI View
 struct PaymentButton: View {
-    var action: () -> Void // Action to perform when the button is tapped
+    @State private var showAlert = false
+    @State private var navigateToCustomTabBar = false // State variable to control navigation to CustomTabBarView
 
     var body: some View {
-        Representable(action: action)
+        VStack {
+            Representable(action: {
+                self.showAlert = true
+            })
             .frame(minWidth: 100, maxWidth: 400)
             .frame(height: 45)
             .frame(maxWidth: .infinity)
+            
+            // Alert to show payment successful message
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Payment Successful"),
+                    message: Text("Thank you for your purchase!"),
+                    dismissButton: .default(Text("OK")) {
+                        self.navigateToCustomTabBar = true // Set navigateToCustomTabBar to true when the alert is dismissed
+                    }
+                )
+            }
+        }
+        .background(
+            NavigationLink(
+                destination: CustomTabBarView(),
+                isActive: $navigateToCustomTabBar,
+                label: { EmptyView() }
+            )
+        )
     }
 }
 
 // PreviewProvider for PaymentButton
 struct PaymentButton_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentButton(action: {})
+        PaymentButton()
     }
 }
 

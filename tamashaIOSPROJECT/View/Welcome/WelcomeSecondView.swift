@@ -21,50 +21,56 @@ struct Welcome2Page: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 300, height: 300)
-                        .padding(.top, -90)
+                        .padding(.top, 10)
                         .padding(.bottom, 300)
                     
-                    GeometryReader { geometry in
+                    //GeometryReader { geometry in
                         Image("welcome2Img")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 400, height: 300)
-                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .padding(.top, -100)
+                            //.frame(width: geometry.size.width, height: geometry.size.height)
                             .overlay(
                                 Rectangle()
                                     .foregroundColor(Color.white.opacity(0.4))
-                                    .frame(width: 600, height: 600)
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                                    .frame(width: 600, height: 700)
+                                    //.frame(width: geometry.size.width, height: geometry.size.height)
                             )
-                            .padding(.top, -100) // Adjust the top padding to bring it closer to the logo image
-                    }
+                            .padding(.top, -100)
+                    //}
                     
                     VStack(spacing: 20) {
                         HStack {
                             Spacer()
                             Button(action: {
-                                // Action for "Shop men's" button
+                                // Navigate to ShopMenView
                             }) {
-                                Text("Shop men's")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.black)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 2)
-                                    .frame(width: 200)
+                                NavigationLink(destination: ShopMenView()) {
+                                    Text("Shop  Men's")
+                                        .padding()
+                                        .foregroundColor(.white)
+                                        .background(Color.black)
+                                        .cornerRadius(10)
+                                        .padding(.horizontal, 2)
+                                        .frame(width: 200)
+                                }
                             }
+
                             Spacer()
                             
                             Button(action: {
-                                // Action for "Shop women's" button
+                                // Navigate to ShopMenView
                             }) {
-                                Text("Shop women's")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.black)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 2)
-                                    .frame(width: 200)
+                                NavigationLink(destination: ShopWomenView()) {
+                                    Text("Shop Women's")
+                                        .padding()
+                                        .foregroundColor(.white)
+                                        .background(Color.black)
+                                        .cornerRadius(10)
+                                        .padding(.horizontal, 2)
+                                        .frame(width: 200)
+                                }
                             }
                             Spacer()
                         }
@@ -77,7 +83,8 @@ struct Welcome2Page: View {
                                 .cornerRadius(10)
                         }
                     }
-                    .padding(.horizontal, 20) // Add horizontal padding to the VStack
+                    .padding(.horizontal, 20) 
+                    .padding(.bottom, 100)
                     
                     Spacer()
                 }

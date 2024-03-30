@@ -31,7 +31,7 @@ struct CartView: View {
                     }
                     .padding()
 
-                    PaymentButton(action: {}) //apple pay button
+                    PaymentButton() //apple pay button
                     .padding()
 
                 } else {

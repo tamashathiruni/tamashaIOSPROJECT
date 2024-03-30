@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @State private var isActive: Bool = false
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ZStack {
                 Color("logoColor")
                 Image("logo")
@@ -17,21 +18,27 @@ struct WelcomeView: View {
                     .scaledToFit()
                     .frame(width: 300, height: 300)
                 VStack {
-                    Spacer()
-                    NavigationLink(destination: Welcome2Page()) {
-                        Text("Getting Started")
+                            Spacer()
+                            Button(action: {
+                                isActive = true // Set isActive to true to trigger navigation
+                            }) {
+                                Text("Getting Started")
+                                    .padding()
+                                    .foregroundColor(.black)
+                                    .background(Color("logoColor")) // Add background color for better visibility
+                                    .cornerRadius(10)
+                            }
                             .padding()
-                            .foregroundColor(.black)
                             .cornerRadius(10)
-                    }
-                    .padding()
-                    .cornerRadius(10)
-                }
+                            .fullScreenCover(isPresented: $isActive) {
+                                Welcome2Page() // Navigate to Welcome2Page when isActive is true
+                            }
+                        }
             }
             .ignoresSafeArea()
             .accentColor(Color.black)
             .navigationBarHidden(true) // Hide the navigation bar
-        }
+        //}
         .navigationBarBackButtonHidden(true)
     }
 }

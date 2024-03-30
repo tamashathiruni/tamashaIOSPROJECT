@@ -25,14 +25,12 @@ var productList = [Product(name: "Silk Blouse", image: "girl3", price: 2300),
                    Product(name: "Floral Dress", image: "girl1", price: 2100),
                    Product(name: "Floral Dress", image: "girl4", price: 1200)]
 
-var productlistmen = [Product(name: "Floral Dress", image: "man1", price: 2300),
-                      Product(name: "Floral Dress", image: "man2", price: 7000),
-                      Product(name: "Floral Dress", image: "man3", price: 2000),
-                      Product(name: "Floral Dress", image: "man4", price: 2700),
-                      Product(name: "Floral Dress", image: "man5", price: 2000),
-                      Product(name: "Floral Dress", image: "man6", price: 4000),
-                      Product(name: "Floral Dress", image: "man7", price: 5000),
-                      Product(name: "Floral Dress", image: "man8", price: 1900),
-                      Product(name: "Floral Dress", image: "man3", price: 2100),
-                      Product(name: "Floral Dress", image: "man1", price: 1200)]
+var productlistmen = [Product(name: "Plain Tshirt", image: "man1", price: 2300),
+                      Product(name: "Green Tshirt", image: "man2", price: 7000),
+                      Product(name: "Badge Tshirt", image: "man3", price: 2000),
+                      Product(name: "White Coloured Tshirt", image: "man4", price: 2700),
+                      Product(name: "Monalisa Tshirt", image: "man5", price: 2000),
+                      Product(name: "White Tshirt", image: "man6", price: 4000),
+                      Product(name: "White Shirt", image: "man7", price: 5000),
+                      Product(name: "Black Shirt", image: "man8", price: 1900)]
 
